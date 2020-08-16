@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">CemeteryApp1</string>
+    <string name="name_hint">Enter cemetery name</string>
+    <string name="location_hint">Enter cemetery location</string>
+    <string name="state_hint">Enter cemetery state</string>
+    <string name="township_hint">Enter cemetery township</string>
+    <string name="rang_hint">Enter cemetery range</string>
+    <string name="section_hint">Enter cemetery section</string>
+    <string name="spot_hint">Enter cemetery spot</string>
+    <string name="gps_hint">Enter cemetery gps coordinates</string>
+    <string name="firstyear_hint">Enter cemetery first year</string>
+    <string name="county_hint">Enter cemetery county</string>
+    <string name="title_activity_main2">MainActivity</string>
+    <string name="cemetery_tab_title">Cemetery Information</string>
+    <string name="grave_tab_title">Graves</string>
+    <string name="first">Enter first name</string>
+    <string name="last">Enter last name</string>
+    <string name="born">Enter birth year</string>
+    <string name="died">Enter death year</string>
+    <string name="married">Enter marriage year</string>
+    <string name="comment">Enter comments</string>
+    <string name="gps">Enter gps coordinates</string>
+    <string name="coordinates">Coordinates:</string>
+    <string name="established">Established:</string>
+    <string name="spot">Spot:</string>
+    <string name="section">Section:</string>
+    <string name="range">Range:</string>
+    <string name="township">Township:</string>
+    <string name="county">County:</string>
+    <string name="state">State:</string>
+    <string name="location">Location:</string>
+    <string name="add_word">add word</string>
+
+
+</resources>

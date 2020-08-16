@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="6dp"
+            app:cardElevation="6dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/nameEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="16dp"
+                        android:hint="@string/name_hint"
+                        android:inputType="textPersonName"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/firstTv"
+                        app:layout_constraintTop_toBottomOf="@+id/createCemeteryTitle" />
+
+                    <EditText
+                        android:id="@+id/locationEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:hint="@string/location_hint"
+                        android:inputType="textPersonName"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="@+id/nameEditText"
+                        app:layout_constraintStart_toStartOf="@+id/nameEditText"
+                        app:layout_constraintTop_toBottomOf="@+id/nameEditText" />
+
+                    <EditText
+                        android:id="@+id/stateEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:ems="10"
+                        android:hint="@string/state_hint"
+                        android:inputType="textPersonName"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="@+id/locationEditText"
+                        app:layout_constraintStart_toStartOf="@+id/locationEditText"
+                        app:layout_constraintTop_toBottomOf="@+id/locationEditText" />
+
+                    <EditText
+                        android:id="@+id/countyEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:ems="10"
+                        android:hint="@string/county_hint"
+                        android:inputType="textPersonName"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="@+id/stateEditText"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/stateEditText"
+                        app:layout_constraintTop_toBottomOf="@+id/stateEditText" />
+
+                    <EditText
+                        android:id="@+id/townshipEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:ems="10"
+                        android:hint="@string/township_hint"
+                        android:inputType="textPersonName"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="@+id/countyEditText"
+                        app:layout_constraintStart_toStartOf="@+id/countyEditText"
+                        app:layout_constraintTop_toBottomOf="@+id/countyEditText" />
+
+                    <EditText
+                        android:id="@+id/rangeEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:ems="10"
+                        android:hint="@string/rang_hint"
+                        android:inputType="textPersonName"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="@+id/townshipEditText"
+                        app:layout_constraintStart_toStartOf="@+id/townshipEditText"
+                        app:layout_constraintTop_toBottomOf="@+id/townshipEditText" />
+
+                    <EditText
+                        android:id="@+id/sectionEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:ems="10"
+                        android:hint="@string/section_hint"
+                        android:inputType="textPersonName"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="@+id/rangeEditText"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="@+id/rangeEditText"
+                        app:layout_constraintTop_toBottomOf="@+id/rangeEditText" />
+
+                    <EditText
+                        android:id="@+id/spotEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:ems="10"
+                        android:hint="@string/spot_hint"
+                        android:inputType="textPersonName"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/gpsEditText"
+                        app:layout_constraintStart_toStartOf="@+id/gpsEditText"
+                        app:layout_constraintTop_toBottomOf="@+id/gpsEditText" />
+
+                    <EditText
+                        android:id="@+id/gpsEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:ems="10"
+                        android:hint="@string/gps_hint"
+                        android:inputType="textPersonName"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="@+id/firstYearEditText"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/gpsTv"
+                        app:layout_constraintTop_toBottomOf="@+id/firstYearEditText" />
+
+                    <EditText
+                        android:id="@+id/firstYearEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:ems="10"
+                        android:hint="@string/firstyear_hint"
+                        android:inputType="textPersonName"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="@+id/sectionEditText"
+                        app:layout_constraintStart_toStartOf="@+id/sectionEditText"
+                        app:layout_constraintTop_toBottomOf="@+id/sectionEditText" />
+
+                    <TextView
+                        android:id="@+id/locationTc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="@string/location"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/locationEditText"
+                        app:layout_constraintStart_toStartOf="@+id/firstTv" />
+
+                    <TextView
+                        android:id="@+id/stateTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/state"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/stateEditText"
+                        app:layout_constraintStart_toStartOf="@+id/locationTc" />
+
+                    <TextView
+                        android:id="@+id/countyTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/county"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/countyEditText"
+                        app:layout_constraintStart_toStartOf="@+id/stateTv" />
+
+                    <TextView
+                        android:id="@+id/townshipTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/township"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/townshipEditText"
+                        app:layout_constraintStart_toStartOf="@+id/countyTv" />
+
+                    <TextView
+                        android:id="@+id/rangeTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/range"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/rangeEditText"
+                        app:layout_constraintStart_toStartOf="@+id/townshipTv" />
+
+                    <TextView
+                        android:id="@+id/sectionTv"
+                        android:layout_width="51dp"
+                        android:layout_height="20dp"
+                        android:text="@string/section"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/sectionEditText"
+                        app:layout_constraintStart_toStartOf="@+id/rangeTv" />
+
+                    <TextView
+                        android:id="@+id/firstYearTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="First Year:"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/firstYearEditText"
+                        app:layout_constraintStart_toStartOf="@+id/sectionTv" />
+
+                    <TextView
+                        android:id="@+id/gpsTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Coordinates:"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/gpsEditText"
+                        app:layout_constraintStart_toStartOf="@+id/firstYearTv" />
+
+                    <TextView
+                        android:id="@+id/spotTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/spot"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/spotEditText"
+                        app:layout_constraintStart_toStartOf="@+id/gpsTv" />
+
+                    <TextView
+                        android:id="@+id/firstTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="Name:"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/nameEditText"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/createCemeteryTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="32dp"
+                        android:text="Add Cemetery"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </ScrollView>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addCemButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="40dp"
+            android:clickable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/ic_baseline_add_24" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
