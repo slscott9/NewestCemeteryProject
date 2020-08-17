@@ -41,4 +41,16 @@ class EditGraveActivityViewModel(application: Application): AndroidViewModel(app
             grave
         }
     }
+
+    fun insertGrave(grave: Grave){
+         uiScope.launch {
+             susInsertGrave(grave)
+         }
+    }
+
+    private suspend fun susInsertGrave(grave: Grave){
+        withContext(Dispatchers.IO){
+            repository.insertGrave(grave)
+        }
+    }
 }

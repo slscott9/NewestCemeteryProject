@@ -11,9 +11,15 @@
     </data>
 
 
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
 
     <TextView
         android:id="@+id/graveNameTextview"
@@ -141,8 +147,21 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/graveNumberTextView"
         app:layout_constraintStart_toStartOf="@+id/cemmentDescipTv" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/editGraveFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_edit_24"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_gravity="bottom|end"/>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
 </layout>

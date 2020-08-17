@@ -11,7 +11,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import hfad.com.newestcemeteryproject.data.Grave
 import hfad.com.newestcemeteryproject.databinding.ActivityGraveDetailBinding
 import hfad.com.newestcemeteryproject.viewmodel.GraveDetailViewModel
 
@@ -34,7 +33,6 @@ class GraveDetailActivity : AppCompatActivity() {
         Log.i("GraveId", "Grave number clicked from recycler view is $rowId")
         viewModel = ViewModelProvider(this).get(GraveDetailViewModel::class.java)
 
-        viewModel.getGraveWithRowId(rowId!!) //gets the grave that was clicked from the recycler view. This works because the recycler view rows nums match the tables row nums
 
         viewModel.grave.observe(this, Observer {
             it?.let {
@@ -44,22 +42,29 @@ class GraveDetailActivity : AppCompatActivity() {
             }
         })
 
+        binding.editGraveFab.setOnClickListener{
+            val intent = Intent(this, EditGraveActivity::class.java)
+            intent.putExtra("grave_row_id", rowId!!)
+            startActivity(intent)
+        }
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getGraveWithRowId(rowId!!) //gets the grave that was clicked from the recycler view. This works because the recycler view rows nums match the tables row nums
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-
         val inflater = menuInflater
-        inflater.inflate(R.menu.edit_menu, menu)
+        inflater.inflate(R.menu.delete_menu, menu)
         return  super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            R.id.edit_grave_action -> {
-                val intent = Intent(this, EditGraveActivity::class.java)
-                intent.putExtra("grave_row_id", rowId)
-                startActivity(intent)
-            }
 
             R.id.delete_grave_action -> {
                 val dialogBuilder = AlertDialog.Builder(this)
