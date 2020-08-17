@@ -29,6 +29,14 @@ class CemeteryRepo(private val cemDao: CemeteryDao) {
         return cemDao.getCemeteryWithRowNum(id)
     }
 
+    fun deleteGraveWithId(cemeteryId: Int){
+        cemDao.deleteGraveWithId(cemeteryId)
+    }
+
+    fun getGraveWithRowId(rowId: Int): Grave{
+        return cemDao.getGraveWithRowId(rowId)
+    }
+
 
 
 

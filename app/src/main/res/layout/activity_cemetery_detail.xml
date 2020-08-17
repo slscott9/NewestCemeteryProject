@@ -148,11 +148,11 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="76dp"
                     android:text="@string/location"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cemNameTv" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/stateText"
@@ -168,18 +168,17 @@
                     android:id="@+id/countyText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     android:text="@string/county"
                     android:textStyle="bold"
-                    app:layout_constraintBaseline_toBaselineOf="@+id/stateText"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/townShipText" />
+                    app:layout_constraintStart_toStartOf="@+id/townShipText"
+                    app:layout_constraintTop_toBottomOf="@+id/townShipText" />
 
                 <TextView
                     android:id="@+id/townShipText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="36dp"
                     android:text="@string/township"
                     android:textStyle="bold"
                     app:layout_constraintBaseline_toBaselineOf="@+id/cemLocationTv"
@@ -199,10 +198,11 @@
                     android:id="@+id/sectionText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     android:text="@string/section"
                     android:textStyle="bold"
-                    app:layout_constraintBaseline_toBaselineOf="@+id/rangeText"
-                    app:layout_constraintStart_toStartOf="@+id/countyText" />
+                    app:layout_constraintStart_toStartOf="@+id/countyText"
+                    app:layout_constraintTop_toBottomOf="@+id/countyText" />
 
                 <TextView
                     android:id="@+id/spotText"
@@ -258,7 +258,9 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             tools:listitem="@layout/grave_list_item"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            android:orientation="vertical"
+            app:spanCount="2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

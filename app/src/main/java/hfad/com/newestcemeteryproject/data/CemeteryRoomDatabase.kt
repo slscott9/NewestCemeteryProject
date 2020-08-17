@@ -9,7 +9,7 @@ import kotlinx.coroutines.CoroutineScope
 @Database(entities = [Cemetery::class, Grave::class], version = 1, exportSchema = false)
 abstract class CemeteryRoomDatabase : RoomDatabase() {
 
-    abstract fun wordDao(): CemeteryDao
+    abstract fun cemDao(): CemeteryDao
 
     companion object {
         @Volatile

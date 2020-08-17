@@ -49,7 +49,6 @@ class CemeteryDetailActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.
     }
 
     override fun onResume() {

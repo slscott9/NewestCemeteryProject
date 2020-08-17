@@ -24,10 +24,9 @@ class CemeteryViewModel(application: Application) : AndroidViewModel(application
     // - Repository is completely separated from the UI through the ViewModel.
     val allCems: LiveData<List<Cemetery>>
 
-    //initailized from CemteryDetailActivity we observe it when it is not null
 
-    private val _gravesWithId = MutableLiveData<List<Grave>>()
-    val gravesWithId: LiveData<List<Grave>>
+    private val _gravesWithId = MutableLiveData<List<Grave>>() //can change we need it mutable because it will be set over and over by database query results view model can change this property
+    val gravesWithId: LiveData<List<Grave>>                     //cannot change, we expose this to other classes (incapsulation)
         get() =  _gravesWithId
 
 
@@ -38,7 +37,7 @@ class CemeteryViewModel(application: Application) : AndroidViewModel(application
 
 
     init {
-        val wordsDao = CemeteryRoomDatabase.getDatabase(application, viewModelScope).wordDao()
+        val wordsDao = CemeteryRoomDatabase.getDatabase(application, viewModelScope).cemDao()
         repository = CemeteryRepo(wordsDao)
         allCems = repository.allCems
 

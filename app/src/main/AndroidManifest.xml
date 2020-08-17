@@ -9,11 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GraveDetailActivity"></activity>
-        <activity android:name=".CemeteryDetailActivity" />
-        <activity android:name=".NewCemeteryActivity" />
-        <activity android:name=".CreateGraveActivity" />
-        <activity android:name=".CemeteryListActivity">
+        <activity android:name=".EditGraveActivity"
+            android:label="Edit Grave"/>
+        <activity android:name=".GraveDetailActivity"
+            android:label="Grave Details"/>
+        <activity android:name=".CemeteryDetailActivity"
+            android:label="Cemetery Details"/>
+        <activity android:name=".NewCemeteryActivity"
+            android:label="Create a new cemetery"/>
+        <activity android:name=".CreateGraveActivity"
+            android:label="Create a new grave"/>
+        <activity android:name=".CemeteryListActivity"
+            android:label="Cemeteries">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

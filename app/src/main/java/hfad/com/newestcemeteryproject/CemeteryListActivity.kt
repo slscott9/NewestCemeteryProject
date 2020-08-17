@@ -34,9 +34,9 @@ class CemeteryListActivity : AppCompatActivity() {
         // Add an observer on the LiveData returned by the getAllCems
         // The onChanged() method fires when the observed data changes and the activity is
         // in the foreground.
-        viewModel.allCems.observe(this, Observer { words ->
+        viewModel.allCems.observe(this, Observer { allCemeteries ->
             // When there is a change in the List of Cemeteries send it to the adapter to update the recycler view
-            words?.let { adapter.submitList(it) }
+            allCemeteries?.let { adapter.submitList(it) }
         })
 
         cemlistRecyclerView.adapter = adapter

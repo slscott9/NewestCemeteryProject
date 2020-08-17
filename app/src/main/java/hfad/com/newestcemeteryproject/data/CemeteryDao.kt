@@ -3,6 +3,7 @@ package hfad.com.newestcemeteryproject.data
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
 @Dao
@@ -18,7 +19,7 @@ interface CemeteryDao {
     @Insert
     fun insertCemetery(cem: Cemetery)
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE) //if a grave has the same primary key it will replace it with the new data
     fun insertGrave(grave: Grave)
 
     @Query("DELETE FROM cemetery_table")
@@ -29,4 +30,10 @@ interface CemeteryDao {
 
     @Query("select * from  cemetery_table where row_number= :rowNum")
     fun getCemeteryWithRowNum(rowNum: Int) : Cemetery
+
+    @Query("delete from graves where id= :cemId")
+    fun deleteGraveWithId(cemId: Int)
+
+    @Query("select * from graves where id= :rowId")
+    fun getGraveWithRowId(rowId: Int) : Grave
 }
