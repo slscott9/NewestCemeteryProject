@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="hfad.com.newestcemeteryproject">
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the "MyLocation" functionality.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -9,17 +16,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EditGraveActivity"
-            android:label="Edit Grave"/>
-        <activity android:name=".GraveDetailActivity"
-            android:label="Grave Details"/>
-        <activity android:name=".CemeteryDetailActivity"
-            android:label="Cemetery Details"/>
-        <activity android:name=".NewCemeteryActivity"
-            android:label="Create a new cemetery"/>
-        <activity android:name=".CreateGraveActivity"
-            android:label="Create a new grave"/>
-        <activity android:name=".CemeteryListActivity"
+        <activity android:name=".MainActivity"></activity>
+
+
+        <activity
+            android:name=".EditGraveActivity"
+            android:label="Edit Grave" />
+        <activity
+            android:name=".GraveDetailActivity"
+            android:label="Grave Details" />
+        <activity
+            android:name=".CemeteryDetailActivity"
+            android:label="Cemetery Details" />
+        <activity
+            android:name=".NewCemeteryActivity"
+            android:label="Create a new cemetery" />
+        <activity
+            android:name=".CreateGraveActivity"
+            android:label="Create a new grave" />
+        <activity
+            android:name=".CemeteryListActivity"
             android:label="Cemeteries">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
