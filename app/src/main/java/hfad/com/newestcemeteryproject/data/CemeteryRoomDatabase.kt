@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import kotlinx.coroutines.CoroutineScope
 
-@Database(entities = [Cemetery::class, Grave::class], version = 1, exportSchema = false)
+@Database(entities = [Cemetery::class, Grave::class], version = 2, exportSchema = false)
 abstract class CemeteryRoomDatabase : RoomDatabase() {
 
     abstract fun cemDao(): CemeteryDao

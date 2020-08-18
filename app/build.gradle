@@ -48,7 +48,9 @@ dependencies {
     implementation 'com.karumi:dexter:6.0.1'
 
 
-
+    // Dexter runtime permissions
+    // https://github.com/Karumi/Dexter
+    implementation 'com.karumi:dexter:6.0.1'
 
     // Room components
     implementation "androidx.room:room-runtime:$rootProject.roomVersion"

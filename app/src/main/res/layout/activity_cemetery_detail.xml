@@ -126,16 +126,7 @@
                         app:layout_constraintStart_toEndOf="@+id/spotText"
                         tools:text="spot" />
 
-                    <TextView
-                        android:id="@+id/cemGPSTv"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:text="@{cemeteryViewModel.cemetery.gps}"
-                        app:layout_constraintBaseline_toBaselineOf="@+id/gpsText"
-                        app:layout_constraintEnd_toEndOf="@+id/cemSpotTv"
-                        app:layout_constraintStart_toEndOf="@+id/gpsText"
-                        tools:text="gps" />
+
 
                     <TextView
                         android:id="@+id/cemFirstYearTv"
@@ -231,15 +222,7 @@
                         app:layout_constraintStart_toStartOf="@+id/rangeText"
                         app:layout_constraintTop_toBottomOf="@+id/rangeText" />
 
-                    <TextView
-                        android:id="@+id/gpsText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:text="@string/coordinates"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="@+id/establishedText"
-                        app:layout_constraintTop_toBottomOf="@+id/establishedText" />
+
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

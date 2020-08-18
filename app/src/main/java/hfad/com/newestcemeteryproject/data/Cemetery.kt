@@ -26,9 +26,8 @@ data class Cemetery(
 
     val firstYear: String,
 
-    val section: String,
+    val section: String
 
-    val gps: String
 )
 
 @Entity(tableName = "graves")

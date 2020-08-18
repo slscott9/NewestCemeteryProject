@@ -7,11 +7,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -22,12 +23,12 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_width="376dp"
+                android:layout_height="638dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent">
 
                     <EditText
                         android:id="@+id/nameEditText"
@@ -46,13 +47,12 @@
 
                     <EditText
                         android:id="@+id/locationEditText"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:hint="@string/location_hint"
                         android:inputType="textPersonName"
                         android:textSize="12sp"
-                        app:layout_constraintEnd_toEndOf="@+id/nameEditText"
                         app:layout_constraintStart_toStartOf="@+id/nameEditText"
                         app:layout_constraintTop_toBottomOf="@+id/nameEditText" />
 
@@ -60,13 +60,14 @@
                         android:id="@+id/stateEditText"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="16dp"
                         android:ems="10"
                         android:hint="@string/state_hint"
                         android:inputType="textPersonName"
                         android:textSize="12sp"
-                        app:layout_constraintEnd_toEndOf="@+id/locationEditText"
-                        app:layout_constraintStart_toStartOf="@+id/locationEditText"
+                        app:layout_constraintEnd_toEndOf="@+id/nameEditText"
+                        app:layout_constraintStart_toEndOf="@+id/stateTv"
                         app:layout_constraintTop_toBottomOf="@+id/locationEditText" />
 
                     <EditText
@@ -122,36 +123,6 @@
                         app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toStartOf="@+id/rangeEditText"
                         app:layout_constraintTop_toBottomOf="@+id/rangeEditText" />
-
-                    <EditText
-                        android:id="@+id/spotEditText"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:ems="10"
-                        android:hint="@string/spot_hint"
-                        android:inputType="textPersonName"
-                        android:textSize="12sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="@+id/gpsEditText"
-                        app:layout_constraintStart_toStartOf="@+id/gpsEditText"
-                        app:layout_constraintTop_toBottomOf="@+id/gpsEditText" />
-
-                    <EditText
-                        android:id="@+id/gpsEditText"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:ems="10"
-                        android:hint="@string/gps_hint"
-                        android:inputType="textPersonName"
-                        android:textSize="12sp"
-                        app:layout_constraintEnd_toEndOf="@+id/firstYearEditText"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toEndOf="@+id/gpsTv"
-                        app:layout_constraintTop_toBottomOf="@+id/firstYearEditText" />
 
                     <EditText
                         android:id="@+id/firstYearEditText"
@@ -224,20 +195,12 @@
                         app:layout_constraintStart_toStartOf="@+id/sectionTv" />
 
                     <TextView
-                        android:id="@+id/gpsTv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Coordinates:"
-                        app:layout_constraintBaseline_toBaselineOf="@+id/gpsEditText"
-                        app:layout_constraintStart_toStartOf="@+id/firstYearTv" />
-
-                    <TextView
                         android:id="@+id/spotTv"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="@string/spot"
                         app:layout_constraintBaseline_toBaselineOf="@+id/spotEditText"
-                        app:layout_constraintStart_toStartOf="@+id/gpsTv" />
+                        app:layout_constraintStart_toStartOf="@+id/firstYearTv" />
 
                     <TextView
                         android:id="@+id/firstTv"
@@ -260,6 +223,31 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
+                    <EditText
+                        android:id="@+id/spotEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:ems="10"
+                        android:hint="@string/spot_hint"
+                        android:inputType="textPersonName"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/firstYearEditText"
+                        app:layout_constraintStart_toStartOf="@+id/firstYearEditText"
+                        app:layout_constraintTop_toBottomOf="@+id/firstYearEditText" />
+
+                    <ImageButton
+                        android:id="@+id/locationBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="@+id/nameEditText"
+                        app:layout_constraintStart_toEndOf="@+id/locationEditText"
+                        app:layout_constraintTop_toBottomOf="@+id/nameEditText"
+                        app:srcCompat="@android:drawable/ic_menu_mylocation" />
+
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -275,9 +263,9 @@
             android:layout_marginEnd="40dp"
             android:layout_marginBottom="40dp"
             android:clickable="true"
+            android:src="@drawable/ic_baseline_add_24"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:src="@drawable/ic_baseline_add_24" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
