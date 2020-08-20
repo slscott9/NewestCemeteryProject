@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -43,11 +45,26 @@ class CemeteryDetailActivity : AppCompatActivity() {
 
         binding.graveRecyclerView.adapter = adapter
 
-        binding.addGraveFab.setOnClickListener{
-            val intent = Intent(this, CreateGraveActivity::class.java)
-            intent.putExtra("cemetery_id", cemeteryId!!)
-            startActivity(intent)
+
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu_add, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when(item.itemId){
+            R.id.add_cemetery ->{
+                val intent = Intent(this, CreateGraveActivity::class.java)
+                intent.putExtra("cemetery_id", cemeteryId!!)
+                startActivity(intent)
+            }
         }
+        return super.onOptionsItemSelected(item)
 
     }
 

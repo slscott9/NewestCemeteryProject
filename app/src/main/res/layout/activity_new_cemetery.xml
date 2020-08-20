@@ -23,8 +23,8 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ScrollView
-                android:layout_width="376dp"
-                android:layout_height="638dp">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"

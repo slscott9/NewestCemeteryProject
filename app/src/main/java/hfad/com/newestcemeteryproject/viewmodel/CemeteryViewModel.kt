@@ -92,6 +92,12 @@ class CemeteryViewModel(application: Application) : AndroidViewModel(application
         }
     }
 
+    fun sendCemeteryToNetwork(cemetery: Cemetery){
+            repository.addUser(cemetery){
+
+            }
+    }
+
 
     override fun onCleared() {
         super.onCleared()

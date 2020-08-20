@@ -44,24 +44,19 @@ class NewCemeteryActivity : AppCompatActivity() {
 
     private lateinit var viewModel: CemeteryViewModel
     private lateinit var binding: ActivityNewCemeteryBinding
-
     private lateinit var fusedLocationClient: FusedLocationProviderClient
-
     private lateinit var locationRequest: LocationRequest
-
     private lateinit var  geocoder: Geocoder
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_new_cemetery)
         binding.lifecycleOwner = this
-
         viewModel = ViewModelProvider(this).get(CemeteryViewModel::class.java)
 
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-        locationRequest = LocationRequest()
-
-        geocoder = Geocoder(this, Locale.getDefault())
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this) //Use its methods to get location updates
+        locationRequest = LocationRequest()    //can also use this to get finer location
+        geocoder = Geocoder(this, Locale.getDefault()) //gets lat and long into usable address objects
 
 
         binding.locationBtn.setOnClickListener {
@@ -95,7 +90,7 @@ class NewCemeteryActivity : AppCompatActivity() {
                             permissions: MutableList<PermissionRequest>?,
                             token: PermissionToken?
                         ) {
-                            showRationalDialogForPermissions()
+                            showRationalDialogForPermissions() //Tell user why they need permissions
                         }
                     }).onSameThread()
                     .check()
@@ -138,21 +133,31 @@ class NewCemeteryActivity : AppCompatActivity() {
                         firstYear = firstYear
                     )
                 viewModel.insertCemetery(cemetery)
+                viewModel.sendCemeteryToNetwork(cemetery)
                 finish()
             }
         }
     }
 
+    override fun onPause() {
+        super.onPause()
+        stopLocationUpdates()
+
+    }
+
+    private fun stopLocationUpdates(){
+        fusedLocationClient.removeLocationUpdates(locationCallback) //stop requesting location
+    }
 
 
 
-    private val locationCallback = object : LocationCallback() {
+
+    private val locationCallback = object : LocationCallback() { //We say what happens when the fusedLocationClient.requestLocationUpdates returns location
         override fun onLocationResult(locationResult: LocationResult?) {
             locationResult ?: return
             for (location in locationResult.locations){
                 // Update UI with location data
                 // ...
-
                 val addressList: List<Address>? = geocoder.getFromLocation(location.latitude, location.longitude, 1) //converts lattitude and longitude to an address
                 if (addressList != null && addressList.isNotEmpty()) {
                     val address: Address = addressList?.get(0)
@@ -162,22 +167,21 @@ class NewCemeteryActivity : AppCompatActivity() {
                     }
                     sb.deleteCharAt(sb.length - 1) //
                     binding.locationEditText.setText(sb) //set the text to the adress
-
                 }
             }
         }
     }
 
 
-    @SuppressLint("MissingPermission") //need to put a permission dialog that can take user to the location settings
+    @SuppressLint("MissingPermission")
     private fun startLocationUpdates() {
-        fusedLocationClient?.requestLocationUpdates(locationRequest,
-            locationCallback,
-            Looper.getMainLooper())
+        fusedLocationClient?.requestLocationUpdates(locationRequest, //returns a Task object that longitude and lat can be extracted from
+            locationCallback,                                           //send a callback that we define ourselves
+            Looper.getMainLooper()) //started on a looper thread
     }
 
 
-    private fun isLocationEnabled(): Boolean { //not sure if needed
+    private fun isLocationEnabled(): Boolean { //if false take user to location settings
         val locationManager: LocationManager =
             getSystemService(Context.LOCATION_SERVICE) as LocationManager
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(
@@ -185,7 +189,7 @@ class NewCemeteryActivity : AppCompatActivity() {
         )
     }
 
-    private fun showRationalDialogForPermissions() {
+    private fun showRationalDialogForPermissions() { //show to the user if their permission are not set
         AlertDialog.Builder(this)
             .setMessage("It Looks like you have turned off permissions required for this feature. It can be enabled under Application Settings")
             .setPositiveButton(
