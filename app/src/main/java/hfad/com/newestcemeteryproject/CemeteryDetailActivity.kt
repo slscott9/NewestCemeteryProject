@@ -1,16 +1,16 @@
 package hfad.com.newestcemeteryproject
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import hfad.com.newestcemeteryproject.adapters.GraveListAdapter
 import hfad.com.newestcemeteryproject.adapters.GraveListListener
+import hfad.com.newestcemeteryproject.data.Cemetery
 import hfad.com.newestcemeteryproject.databinding.ActivityCemeteryDetailBinding
 import hfad.com.newestcemeteryproject.viewmodel.CemeteryViewModel
 
@@ -18,12 +18,15 @@ class CemeteryDetailActivity : AppCompatActivity() {
 
     private lateinit var viewModel: CemeteryViewModel
     private lateinit var binding: ActivityCemeteryDetailBinding
+
     private var cemeteryId: Int? = null
+    private lateinit var cemetery: Cemetery
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_cemetery_detail)
         binding.lifecycleOwner = this
+
         cemeteryId = intent.getIntExtra("cemetery_id", 0)
         Log.i("CemeteryDetailActivity", "cem id is $cemeteryId")
 
@@ -31,11 +34,14 @@ class CemeteryDetailActivity : AppCompatActivity() {
         binding.cemeteryViewModel = viewModel
         viewModel.getCemetery(cemeteryId!!)
 
-
         val adapter = GraveListAdapter(GraveListListener {
             val intent = Intent(this, GraveDetailActivity::class.java)
             intent.putExtra("grave_id", it)
             startActivity(intent)
+        })
+
+        viewModel.cemetery.observe(this, Observer {
+            cemetery  = it
         })
 
         //observe the grave list if it is not null
@@ -43,30 +49,33 @@ class CemeteryDetailActivity : AppCompatActivity() {
             adapter.submitList(it)
         })
 
+        binding.addChip.setOnClickListener {
+            val intent = Intent(this, CreateGraveActivity::class.java)
+            intent.putExtra("cemetery_id", cemeteryId!!)
+            startActivity(intent)
+        }
+
+        binding.locationChip.setOnClickListener {
+
+            val uriBuilder = Uri.Builder()
+            uriBuilder.scheme("geo")
+                .path("0,0")
+                .query(cemetery.cemeteryLocation)
+            val addressUri = uriBuilder.build()
+
+            val map = "http://maps.google.co.in/maps?q=${cemetery.cemeteryLocation}"
+
+
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(map))
+
+            startActivity(intent)
+        }
+
         binding.graveRecyclerView.adapter = adapter
 
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-
-        val inflater = menuInflater
-        inflater.inflate(R.menu.menu_add, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
-        when(item.itemId){
-            R.id.add_cemetery ->{
-                val intent = Intent(this, CreateGraveActivity::class.java)
-                intent.putExtra("cemetery_id", cemeteryId!!)
-                startActivity(intent)
-            }
-        }
-        return super.onOptionsItemSelected(item)
-
-    }
 
     override fun onResume() {
         super.onResume()

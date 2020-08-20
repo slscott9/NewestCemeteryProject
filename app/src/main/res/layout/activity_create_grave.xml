@@ -10,167 +10,175 @@
         android:layout_height="match_parent">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:elevation="6dp"
             app:cardCornerRadius="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/firstnNameInputLayout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:hint="First name"
+                    app:hintEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-
-                    <EditText
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/firstNameEt"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginTop="32dp"
-                        android:layout_marginEnd="8dp"
-                        android:hint="@string/first"
-                        android:inputType="text"
-                        android:textSize="12sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toEndOf="@+id/firstNameDescipTv"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                    <EditText
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/lastNameInputLayout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="64dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="32dp"
+                    android:hint="Last name"
+                    app:hintEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/firstnNameInputLayout">
+
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/lastNameet"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/last"
-                        android:inputType="text"
-                        android:textSize="12sp"
-                        app:layout_constraintEnd_toEndOf="@+id/firstNameEt"
-                        app:layout_constraintStart_toStartOf="@+id/firstNameEt"
-                        app:layout_constraintTop_toBottomOf="@+id/firstNameEt" />
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                    <EditText
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/birthYearInputLayout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="32dp"
+                    android:hint="Birth year"
+                    app:hintEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/lastNameInputLayout">
+
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/bornEt"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        android:hint="@string/born"
-                        android:inputType="date"
-                        android:textSize="12sp"
-                        app:layout_constraintEnd_toEndOf="@+id/lastNameet"
-                        app:layout_constraintStart_toStartOf="@+id/lastNameet"
-                        app:layout_constraintTop_toBottomOf="@+id/lastNameet" />
 
-                    <EditText
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/deathYearInputLayout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="64dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="32dp"
+                    android:hint="Death year"
+                    app:hintEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/birthYearInputLayout">
+
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/deathYearEt"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
-                        android:hint="@string/died"
-                        android:inputType="date"
-                        android:textSize="12sp"
-                        app:layout_constraintEnd_toEndOf="@+id/bornEt"
-                        app:layout_constraintStart_toStartOf="@+id/bornEt"
-                        app:layout_constraintTop_toBottomOf="@+id/bornEt" />
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                    <EditText
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/marriageYearInputLayout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:hint="Marriage year"
+                    app:hintEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/graveNumInputLayout"
+                    app:layout_constraintTop_toBottomOf="@+id/deathYearInputLayout">
+
+
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/marriageYearEt"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
-                        android:hint="@string/married"
-                        android:inputType="date"
-                        android:textSize="12sp"
-                        app:layout_constraintEnd_toEndOf="@+id/deathYearEt"
-                        app:layout_constraintStart_toStartOf="@+id/deathYearEt"
-                        app:layout_constraintTop_toBottomOf="@+id/deathYearEt" />
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-                    <EditText
-                        android:id="@+id/commentEt"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:hint="@string/comment"
-                        android:inputType="text"
-                        android:textSize="12sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="@+id/graveNumEt"
-                        app:layout_constraintStart_toStartOf="@+id/graveNumEt"
-                        app:layout_constraintTop_toBottomOf="@+id/graveNumEt" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                    <EditText
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/graveNumInputLayout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="133dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="32dp"
+                    android:hint="Grave Number"
+                    app:hintEnabled="true"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/deathYearInputLayout">
+
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/graveNumEt"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:hint="Enter grave number"
-                        android:inputType="number|text"
-                        android:textSize="12sp"
-                        app:layout_constraintEnd_toEndOf="@+id/marriageYearEt"
-                        app:layout_constraintStart_toStartOf="@+id/marriageYearEt"
-                        app:layout_constraintTop_toBottomOf="@+id/marriageYearEt" />
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                    <TextView
-                        android:id="@+id/firstNameDescipTv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:text="First Name:"
-                        app:layout_constraintBaseline_toBaselineOf="@+id/firstNameEt"
-                        app:layout_constraintStart_toStartOf="parent" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/commentInputLayout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginBottom="8dp"
+                    android:hint="Comment"
+                    app:hintEnabled="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/graveNumInputLayout">
 
-                    <TextView
-                        android:id="@+id/lastNameDescrip"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Last Name:"
-                        app:layout_constraintBaseline_toBaselineOf="@+id/lastNameet"
-                        app:layout_constraintStart_toStartOf="@+id/firstNameDescipTv" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/commentEt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                    <TextView
-                        android:id="@+id/deathYearDescrip"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Death Data:"
-                        app:layout_constraintBaseline_toBaselineOf="@+id/deathYearEt"
-                        app:layout_constraintStart_toStartOf="@+id/bornDescrip" />
 
-                    <TextView
-                        android:id="@+id/bornDescrip"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Birth Date:"
-                        app:layout_constraintBaseline_toBaselineOf="@+id/bornEt"
-                        app:layout_constraintStart_toStartOf="@+id/lastNameDescrip" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <TextView
-                        android:id="@+id/marriedDescip"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Marriage Year:"
-                        app:layout_constraintBaseline_toBaselineOf="@+id/marriageYearEt"
-                        app:layout_constraintStart_toStartOf="@+id/deathYearDescrip" />
+            </ScrollView>
 
-                    <TextView
-                        android:id="@+id/graveNumDescip"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Grave Number:"
-                        app:layout_constraintBaseline_toBaselineOf="@+id/graveNumEt"
-                        app:layout_constraintStart_toStartOf="@+id/marriedDescip" />
-
-                    <TextView
-                        android:id="@+id/commentDescip"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Comment:"
-                        app:layout_constraintBaseline_toBaselineOf="@+id/commentEt"
-                        app:layout_constraintStart_toStartOf="@+id/graveNumDescip" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -181,6 +189,7 @@
             android:layout_marginBottom="32dp"
             android:src="@drawable/ic_baseline_add_24"
             android:layout_marginEnd="32dp" />
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
 

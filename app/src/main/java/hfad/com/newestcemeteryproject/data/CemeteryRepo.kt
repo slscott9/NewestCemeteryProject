@@ -56,6 +56,7 @@ class CemeteryRepo(private val cemDao: CemeteryDao) {
             yearFounded = cemetery.firstYear,
             section = cemetery.section,
             state = cemetery.cemeteryState).enqueue(
+
             object : retrofit2.Callback<Cemetery> {
                 override fun onFailure(call: Call<Cemetery>, t: Throwable) {
                     onResult(null)
@@ -81,6 +82,7 @@ class CemeteryRepo(private val cemDao: CemeteryDao) {
             comment = grave.comment,
             graveNum = grave.graveNumber
             ).enqueue(
+
             object : retrofit2.Callback<Grave> {
                 override fun onFailure(call: Call<Grave>, t: Throwable) {
                     onResult(null)
