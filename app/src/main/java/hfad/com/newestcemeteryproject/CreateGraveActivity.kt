@@ -53,7 +53,8 @@ class CreateGraveActivity : AppCompatActivity(), View.OnClickListener{
 
 
         binding.createGraveFAB.setOnClickListener {
-            if(binding.firstNameEt.text.isNullOrEmpty() ||
+            if(
+                binding.firstNameEt.text.isNullOrEmpty() ||
                 binding.lastNameet.text.isNullOrEmpty() ||
                 binding.bornEt.text.isNullOrEmpty() ||
                 binding.deathYearEt.text.isNullOrEmpty() ||
@@ -63,7 +64,8 @@ class CreateGraveActivity : AppCompatActivity(), View.OnClickListener{
                 Toast.makeText(this, "Please entery all fields", Toast.LENGTH_SHORT).show()
             }else{
                 val grave =
-                    Grave(firstName = binding.firstNameEt.text.toString(),
+                    Grave(
+                        firstName = binding.firstNameEt.text.toString(),
                         lastName = binding.lastNameet.text.toString(),
                         birthDate = binding.bornEt.text.toString(),
                         deathDate = binding.bornEt.text.toString(),
@@ -72,6 +74,7 @@ class CreateGraveActivity : AppCompatActivity(), View.OnClickListener{
                         graveNumber = binding.graveNumEt.text.toString(),
                         cemeteryId = cemeteryId)
                 viewModel.insertGrave(grave)
+                viewModel.sendGraveToNetwork(grave)
                 //viewModel.getGraveList(cemeteryId)
                 finish()
             }

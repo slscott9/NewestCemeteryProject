@@ -3,6 +3,7 @@ package hfad.com.newestcemeteryproject.network
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import hfad.com.newestcemeteryproject.data.Cemetery
+import hfad.com.newestcemeteryproject.data.Grave
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -11,21 +12,38 @@ import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 
+
+
 interface RestApi {
 
     @FormUrlEncoded
     @POST("/cgi-bin/addCem.pl")
-    fun addCemetery(@Field("cem_id") cemId: String,
-                @Field("name") cemName: String,
-                @Field("loc") location: String,
-                @Field("state") state: String,
-                @Field("county") county: String,
-                @Field("twnsp") township: String,
-                @Field("range") range: String,
-                @Field("spot") spot: String,
-                @Field("fyear") yearFounded: String,
-                @Field("section") section: String
+    fun addCemetery(
+        @Field("cem_id") cemId: String,
+        @Field("name") cemName: String,
+        @Field("loc") location: String,
+        @Field("state") state: String,
+        @Field("county") county: String,
+        @Field("twnsp") township: String,
+        @Field("range") range: String,
+        @Field("spot") spot: String,
+        @Field("fyear") yearFounded: String,
+        @Field("section") section: String
                 ): Call<Cemetery>
+
+    @FormUrlEncoded
+    @POST("/cgi-bin/addGrave.pl")
+    fun addGrave(
+        @Field("id") id: Int,
+        @Field("cemetery_id") cemeteryId: Int,
+        @Field("first_name") firstName: String,
+        @Field("last_name") lastName: String,
+        @Field("born_data") bornDate: String,
+        @Field("death_data") deathDate: String,
+        @Field("married") marriageYear: String,
+        @Field("comment") comment: String,
+        @Field("grave_number") graveNum: String
+    ): Call<Grave>
 }
 
 private val moshi = Moshi.Builder() //can use later
@@ -48,6 +66,7 @@ object ServiceBuilder {
         return retrofit.create(service)
     }
 
-//    val networkAccessor = retrofit.create(
+//    val networkAccessor = retrofit.create(   this will be for a get request?
 //        RestApi::class.java)
 }
+

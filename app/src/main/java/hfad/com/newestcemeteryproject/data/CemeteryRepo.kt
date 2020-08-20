@@ -43,27 +43,56 @@ class CemeteryRepo(private val cemDao: CemeteryDao) {
 
 
     //This method is asynchronous
-    fun addUser(cemetery: Cemetery, onResult: (Cemetery?) -> Unit){
+    fun addCemetery(cemetery: Cemetery, onResult: (Cemetery?) -> Unit){
         val retrofit = ServiceBuilder.buildService(RestApi::class.java)
-        retrofit.addCemetery(cemId = cemetery.id.toString(),
-                                cemName = cemetery.cemeteryName,
-                                location = cemetery.cemeteryLocation,
-                                county = cemetery.cemeteryCounty,
-                                township = cemetery.township,
-                                range = cemetery.range,
-                                spot = cemetery.spot,
-                                yearFounded = cemetery.firstYear,
-                                section = cemetery.section,
-                                state = cemetery.cemeteryState).enqueue(
+        retrofit.addCemetery(
+            cemId = cemetery.id.toString(),
+            cemName = cemetery.cemeteryName,
+            location = cemetery.cemeteryLocation,
+            county = cemetery.cemeteryCounty,
+            township = cemetery.township,
+            range = cemetery.range,
+            spot = cemetery.spot,
+            yearFounded = cemetery.firstYear,
+            section = cemetery.section,
+            state = cemetery.cemeteryState).enqueue(
             object : retrofit2.Callback<Cemetery> {
                 override fun onFailure(call: Call<Cemetery>, t: Throwable) {
                     onResult(null)
                 }
                 override fun onResponse(call: Call<Cemetery>, response: Response<Cemetery>) {
-                    val addedUser = response.body()
-                    onResult(addedUser)
+                    val addedCemetery = response.body()
+                    onResult(addedCemetery)
                 }
             }
         )
     }
+
+    fun addGrave(grave: Grave, onResult: (Grave?) -> Unit){
+        val retrofit = ServiceBuilder.buildService(RestApi::class.java)
+        retrofit.addGrave(
+            id = grave.id,
+            cemeteryId = grave.cemeteryId,
+            firstName = grave.firstName,
+            lastName = grave.lastName,
+            bornDate = grave.birthDate,
+            deathDate = grave.deathDate,
+            marriageYear = grave.marriageYear,
+            comment = grave.comment,
+            graveNum = grave.graveNumber
+            ).enqueue(
+            object : retrofit2.Callback<Grave> {
+                override fun onFailure(call: Call<Grave>, t: Throwable) {
+                    onResult(null)
+                }
+                override fun onResponse(call: Call<Grave>, response: Response<Grave>) {
+                    val addedGrave = response.body()
+                    onResult(addedGrave)
+                }
+            }
+        )
+    }
+
 }
+
+

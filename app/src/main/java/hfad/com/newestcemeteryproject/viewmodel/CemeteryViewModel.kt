@@ -93,9 +93,25 @@ class CemeteryViewModel(application: Application) : AndroidViewModel(application
     }
 
     fun sendCemeteryToNetwork(cemetery: Cemetery){
-            repository.addUser(cemetery){
-
+            repository.addCemetery(cemetery){
+//                if (it?.userId != null) {
+//                    // it = newly added user parsed as response
+//                    // it?.id = newly added user ID
+//                } else {
+//                    Timber.d("Error registering new user")
+//                }
             }
+    }
+
+    fun sendGraveToNetwork(grave: Grave){
+        repository.addGrave(grave){
+            //if (it?.userId != null) {
+//                    // it = newly added user parsed as response
+//                    // it?.id = newly added user ID
+//                } else {
+//                    Timber.d("Error registering new user")
+//                }
+        }
     }
 
 
