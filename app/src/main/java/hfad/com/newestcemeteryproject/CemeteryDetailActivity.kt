@@ -57,17 +57,8 @@ class CemeteryDetailActivity : AppCompatActivity() {
 
         binding.locationChip.setOnClickListener {
 
-            val uriBuilder = Uri.Builder()
-            uriBuilder.scheme("geo")
-                .path("0,0")
-                .query(cemetery.cemeteryLocation)
-            val addressUri = uriBuilder.build()
-
-            val map = "http://maps.google.co.in/maps?q=${cemetery.cemeteryLocation}"
-
-
+            val map = "http://maps.google.co.in/maps?q=${cemetery.cemeteryLocation}" //this formats the address for google maps
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(map))
-
             startActivity(intent)
         }
 

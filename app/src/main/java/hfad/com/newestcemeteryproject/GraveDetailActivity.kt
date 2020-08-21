@@ -25,10 +25,7 @@ class GraveDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val actionBar = supportActionBar
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_grave_detail)
-
         binding.lifecycleOwner = this
         rowId = intent.getIntExtra("grave_id", 0)
         Log.i("GraveId", "Grave number clicked from recycler view is $rowId")
@@ -72,17 +69,13 @@ class GraveDetailActivity : AppCompatActivity() {
 
             val chooser: Intent = Intent.createChooser(intent, "Choose an app")
             startActivity(chooser)
-
         }
-
-
 
         binding.editGraveBtn.setOnClickListener {
             val intent = Intent(this, EditGraveActivity::class.java)
             intent.putExtra("grave_row_id", rowId!!)
             startActivity(intent)
         }
-
     }
 
     override fun onResume() {
