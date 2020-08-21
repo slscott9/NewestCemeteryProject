@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
@@ -73,6 +74,7 @@ class CreateGraveActivity : AppCompatActivity(), View.OnClickListener{
                         comment = binding.commentEt.text.toString(),
                         graveNumber = binding.graveNumEt.text.toString(),
                         cemeteryId = cemeteryId)
+                Log.i("CreateGraveActivity", "cemetery id passed is $cemeteryId")
                 viewModel.insertGrave(grave)
                 viewModel.sendGraveToNetwork(grave)
                 //viewModel.getGraveList(cemeteryId)

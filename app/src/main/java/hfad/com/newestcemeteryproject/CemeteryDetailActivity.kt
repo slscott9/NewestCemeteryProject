@@ -31,7 +31,6 @@ class CemeteryDetailActivity : AppCompatActivity() {
         Log.i("CemeteryDetailActivity", "cem id is $cemeteryId")
 
         viewModel = ViewModelProvider(this).get(CemeteryViewModel::class.java)
-        binding.cemeteryViewModel = viewModel
         viewModel.getCemetery(cemeteryId!!)
 
         val adapter = GraveListAdapter(GraveListListener {
@@ -42,6 +41,8 @@ class CemeteryDetailActivity : AppCompatActivity() {
 
         viewModel.cemetery.observe(this, Observer {
             cemetery  = it
+            binding.cemeteryViewModel = viewModel
+
         })
 
         //observe the grave list if it is not null

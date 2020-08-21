@@ -67,13 +67,13 @@ class EditGraveActivity : AppCompatActivity() , View.OnClickListener{
             it?.let {
                 binding.grave = it
                 grave = it
-                binding.executePendingBindings()
             }
         })
 
         binding.createGraveFAB.setOnClickListener {
             val grave =
-                Grave(firstName = binding.firstNameEt.text.toString(),
+                Grave(
+                    firstName = binding.firstNameEt.text.toString(),
                     lastName = binding.lastNameet.text.toString(),
                     birthDate = binding.bornEt.text.toString(),
                     deathDate = binding.deathYearEt.text.toString(),

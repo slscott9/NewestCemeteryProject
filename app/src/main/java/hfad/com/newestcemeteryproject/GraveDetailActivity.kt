@@ -22,25 +22,24 @@ class GraveDetailActivity : AppCompatActivity() {
     private var rowId: Int? = null
     private lateinit var grave: Grave
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_grave_detail)
         binding.lifecycleOwner = this
         rowId = intent.getIntExtra("grave_id", 0)
-        Log.i("GraveId", "Grave number clicked from recycler view is $rowId")
         viewModel = ViewModelProvider(this).get(GraveDetailViewModel::class.java)
-
+        viewModel.getGraveWithRowId(rowId!!) //gets the grave that was clicked from the recycler view. This works because the recycler view rows nums match the tables row nums
 
         viewModel.grave.observe(this, Observer {
             it?.let {
-                binding.grave = it    //set the grave variable for the binding to use for its views
+                binding.grave = it    //set the grave variable for the binding to use for its views everytime a change occurs to view model's grave object
                 grave = it            //set the grave object so we can use the grave row id to delete from the table
-                binding.executePendingBindings()
             }
         })
 
-        binding.deleteGraveBtn.setOnClickListener {
+        binding.deleteChip.setOnClickListener {
             val dialogBuilder = AlertDialog.Builder(this)
             dialogBuilder.setMessage("Are you sure you want to delete this grave?")
                 .setCancelable(false)
@@ -58,7 +57,7 @@ class GraveDetailActivity : AppCompatActivity() {
 
         }
 
-        binding.sendGraveButton.setOnClickListener {
+        binding.sendChip.setOnClickListener {
 
             val graveInfo = "${grave.firstName} ${grave.lastName} birth year - ${grave.birthDate}, death year - ${grave.deathDate}, marriage year - ${grave.marriageYear}, comment: ${grave.comment}"
             val intent = Intent().apply {
@@ -71,20 +70,10 @@ class GraveDetailActivity : AppCompatActivity() {
             startActivity(chooser)
         }
 
-        binding.editGraveBtn.setOnClickListener {
+        binding.editChip.setOnClickListener {
             val intent = Intent(this, EditGraveActivity::class.java)
             intent.putExtra("grave_row_id", rowId!!)
             startActivity(intent)
         }
     }
-
-    override fun onResume() {
-        super.onResume()
-        viewModel.getGraveWithRowId(rowId!!) //gets the grave that was clicked from the recycler view. This works because the recycler view rows nums match the tables row nums
-
-
-    }
-
-
-
 }

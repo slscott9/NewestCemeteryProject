@@ -81,7 +81,6 @@ class NewCemeteryActivity : AppCompatActivity() {
                     .withListener(object : MultiplePermissionsListener {
                         override fun onPermissionsChecked(report: MultiplePermissionsReport?) {
                             if (report!!.areAllPermissionsGranted()) {
-
                                 startLocationUpdates()
                             }
                         }
@@ -95,7 +94,6 @@ class NewCemeteryActivity : AppCompatActivity() {
                     }).onSameThread()
                     .check()
             }
-
         }
 
         binding.addCemButton.setOnClickListener {

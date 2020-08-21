@@ -11,196 +11,201 @@
     </data>
 
 
-
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView3"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="351dp"
-        android:layout_marginTop="16dp"
-        app:cardBackgroundColor="@android:color/transparent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:foregroundGravity="center_horizontal">
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="300dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/grave_shape"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView3"
+            android:layout_width="match_parent"
+            android:layout_height="351dp"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="@android:color/transparent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
 
-            <TextView
-                android:id="@+id/graveNameTextview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="124dp"
-                android:gravity="left"
-                android:textSize="32sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:setGraveFirstName="@{grave}"
-                tools:text="stuart" />
-
-            <TextView
-                android:id="@+id/lastTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView"
-                android:textSize="32sp"
-                android:textStyle="bold"
-                app:layout_constraintBaseline_toBaselineOf="@+id/graveNameTextview"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/grave_shape"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.2"
-                app:layout_constraintStart_toEndOf="@+id/graveNameTextview"
-                app:setGraveLast="@{grave}" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/birthTextView"
+
+                <TextView
+                    android:id="@+id/graveNameTextview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="124dp"
+                    android:foregroundGravity="center_horizontal"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.331"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:setGraveFirstName="@{grave}"
+                    tools:text="stuart" />
+
+                <TextView
+                    android:id="@+id/lastTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="TextView"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/graveNameTextview"
+                    app:layout_constraintStart_toEndOf="@+id/graveNameTextview"
+                    app:setGraveLast="@{grave}" />
+
+                <TextView
+                    android:id="@+id/birthTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
+                    android:text="TextView"
+                    app:layout_constraintStart_toEndOf="@+id/birthDescripTv"
+                    app:layout_constraintTop_toBottomOf="@+id/lastTextView"
+                    app:setGraveBirth="@{grave}" />
+
+                <TextView
+                    android:id="@+id/deathTextview"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="TextView"
+                    app:layout_constraintEnd_toEndOf="@+id/birthTextView"
+                    app:layout_constraintStart_toStartOf="@+id/birthTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/birthTextView"
+                    app:setGraveDeath="@{grave}" />
+
+                <TextView
+                    android:id="@+id/marriageYearTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="TextView"
+                    app:layout_constraintEnd_toEndOf="@+id/deathTextview"
+                    app:layout_constraintStart_toStartOf="@+id/deathTextview"
+                    app:layout_constraintTop_toBottomOf="@+id/deathTextview"
+                    app:setGraveMarried="@{grave}" />
+
+                <TextView
+                    android:id="@+id/commentTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="TextView"
+                    app:layout_constraintEnd_toEndOf="@+id/marriageYearTextView"
+                    app:layout_constraintStart_toStartOf="@+id/marriageYearTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/marriageYearTextView"
+                    app:setGraveComment="@{grave}" />
+
+                <TextView
+                    android:id="@+id/graveNumberTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="TextView"
+                    app:layout_constraintEnd_toEndOf="@+id/commentTextView"
+                    app:layout_constraintStart_toStartOf="@+id/commentTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/commentTextView"
+                    app:setGraveNum="@{grave}" />
+
+                <TextView
+                    android:id="@+id/birthDescripTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="60dp"
+                    android:text="Birth Date:"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/birthTextView"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/deathDescripTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Death Date:"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/deathTextview"
+                    app:layout_constraintStart_toStartOf="@+id/birthDescripTv" />
+
+                <TextView
+                    android:id="@+id/marriedDescipTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Married:"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/marriageYearTextView"
+                    app:layout_constraintStart_toStartOf="@+id/deathDescripTv" />
+
+                <TextView
+                    android:id="@+id/cemmentDescipTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Comment:"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/commentTextView"
+                    app:layout_constraintStart_toStartOf="@+id/marriedDescipTv" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Grave Number:"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/graveNumberTextView"
+                    app:layout_constraintStart_toStartOf="@+id/cemmentDescipTv" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <com.google.android.material.chip.ChipGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.924"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView3"
+            app:singleLine="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/deleteChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="16dp"
-                android:text="TextView"
-                app:layout_constraintStart_toEndOf="@+id/birthDescripTv"
-                app:layout_constraintTop_toBottomOf="@+id/lastTextView"
-                app:setGraveBirth="@{grave}" />
+                android:text="delete"
+                app:chipIcon="@drawable/ic_baseline_delete_forever_24" />
 
-            <TextView
-                android:id="@+id/deathTextview"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="TextView"
-                app:layout_constraintEnd_toEndOf="@+id/birthTextView"
-                app:layout_constraintStart_toStartOf="@+id/birthTextView"
-                app:layout_constraintTop_toBottomOf="@+id/birthTextView"
-                app:setGraveDeath="@{grave}" />
-
-            <TextView
-                android:id="@+id/marriageYearTextView"
+            <com.google.android.material.chip.Chip
+                android:id="@+id/sendChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="TextView"
-                app:layout_constraintEnd_toEndOf="@+id/deathTextview"
-                app:layout_constraintStart_toStartOf="@+id/deathTextview"
-                app:layout_constraintTop_toBottomOf="@+id/deathTextview"
-                app:setGraveMarried="@{grave}" />
+                android:text="send"
+                app:chipIcon="@drawable/ic_baseline_send_24" />
 
-            <TextView
-                android:id="@+id/commentTextView"
+            <com.google.android.material.chip.Chip
+                android:id="@+id/editChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="TextView"
-                app:layout_constraintEnd_toEndOf="@+id/marriageYearTextView"
-                app:layout_constraintStart_toStartOf="@+id/marriageYearTextView"
-                app:layout_constraintTop_toBottomOf="@+id/marriageYearTextView"
-                app:setGraveComment="@{grave}" />
+                android:text="edit"
+                app:chipIcon="@drawable/ic_baseline_edit_24" />
 
-            <TextView
-                android:id="@+id/graveNumberTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="TextView"
-                app:layout_constraintEnd_toEndOf="@+id/commentTextView"
-                app:layout_constraintStart_toStartOf="@+id/commentTextView"
-                app:layout_constraintTop_toBottomOf="@+id/commentTextView"
-                app:setGraveNum="@{grave}" />
+        </com.google.android.material.chip.ChipGroup>
 
-            <TextView
-                android:id="@+id/birthDescripTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="60dp"
-                android:text="Birth Date:"
-                android:textStyle="bold"
-                app:layout_constraintBaseline_toBaselineOf="@+id/birthTextView"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/deathDescripTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Death Date:"
-                android:textStyle="bold"
-                app:layout_constraintBaseline_toBaselineOf="@+id/deathTextview"
-                app:layout_constraintStart_toStartOf="@+id/birthDescripTv" />
-
-            <TextView
-                android:id="@+id/marriedDescipTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Married:"
-                android:textStyle="bold"
-                app:layout_constraintBaseline_toBaselineOf="@+id/marriageYearTextView"
-                app:layout_constraintStart_toStartOf="@+id/deathDescripTv" />
-
-            <TextView
-                android:id="@+id/cemmentDescipTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Comment:"
-                android:textStyle="bold"
-                app:layout_constraintBaseline_toBaselineOf="@+id/commentTextView"
-                app:layout_constraintStart_toStartOf="@+id/marriedDescipTv" />
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Grave Number:"
-                android:textStyle="bold"
-                app:layout_constraintBaseline_toBaselineOf="@+id/graveNumberTextView"
-                app:layout_constraintStart_toStartOf="@+id/cemmentDescipTv" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
-
-
-    <ImageButton
-        android:id="@+id/editGraveBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/sendGraveButton"
-        app:layout_constraintTop_toTopOf="@+id/sendGraveButton"
-        app:srcCompat="@drawable/ic_baseline_edit_24" />
-
-    <ImageButton
-        android:id="@+id/sendGraveButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:layout_marginEnd="176dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView3"
-        app:srcCompat="@android:drawable/ic_menu_send" />
-
-    <ImageButton
-        android:id="@+id/deleteGraveBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@+id/sendGraveButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/sendGraveButton"
-        app:srcCompat="@drawable/ic_baseline_delete_forever_24" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
