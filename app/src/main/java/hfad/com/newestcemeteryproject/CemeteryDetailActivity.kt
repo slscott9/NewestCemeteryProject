@@ -64,8 +64,6 @@ class CemeteryDetailActivity : AppCompatActivity() {
         }
 
         binding.graveRecyclerView.adapter = adapter
-
-
     }
 
 

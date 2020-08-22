@@ -28,27 +28,15 @@ class GraveDetailViewModel(application: Application): AndroidViewModel(applicati
 
     fun deleteGraveWithId(id: Int){
         uiScope.launch {
-            deleteGrave(id)
-
-        }
-    }
-
-    suspend fun deleteGrave(id: Int){
-        withContext(Dispatchers.IO){
             repository.deleteGraveWithId(id)
         }
     }
 
+
     fun getGraveWithRowId(rowId: Int){
         uiScope.launch {
-            _grave.value = susGetGraveWithRowId(rowId)
+            _grave.value = repository.getGraveWithRowId(rowId)
         }
     }
 
-    suspend fun susGetGraveWithRowId(rowId: Int): Grave{
-       return withContext(Dispatchers.IO){
-            val grave = repository.getGraveWithRowId(rowId)
-           grave
-        }
-    }
 }

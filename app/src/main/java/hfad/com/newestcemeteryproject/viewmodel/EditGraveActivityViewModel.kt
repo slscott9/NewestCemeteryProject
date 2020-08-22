@@ -31,26 +31,15 @@ class EditGraveActivityViewModel(application: Application): AndroidViewModel(app
 
     fun getGraveWithId(id: Int){
         uiScope.launch {
-            _grave.value = susGetGraveWithId(id)
+            _grave.value = repository.getGraveWithRowId(id)
         }
     }
 
-    private suspend fun susGetGraveWithId(id: Int): Grave{
-        return withContext(Dispatchers.IO){
-            val grave = repository.getGraveWithRowId(id)
-            grave
-        }
-    }
 
     fun insertGrave(grave: Grave){
          uiScope.launch {
-             susInsertGrave(grave)
+             repository.insertGrave(grave)
          }
     }
 
-    private suspend fun susInsertGrave(grave: Grave){
-        withContext(Dispatchers.IO){
-            repository.insertGrave(grave)
-        }
-    }
 }
