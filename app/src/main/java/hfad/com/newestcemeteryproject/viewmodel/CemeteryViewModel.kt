@@ -12,17 +12,26 @@ import hfad.com.newestcemeteryproject.data.CemeteryRoomDatabase
 import hfad.com.newestcemeteryproject.data.Grave
 import kotlinx.coroutines.*
 
+
+/*
+    Note: Room uses its own dispatcher to run queries on a background thread.
+    Your code should not use withContext(Dispatchers.IO) to call suspending room queries.
+    It will complicate the code and make your queries run slower.
+
+    Using suspend only says the function can be used for coroutines and will be non blocking when it is called.
+    A suspend function does its work then resumes where it left off when it has a result.
+    To be asynchronous we must call suspend function inside of coroutines in the view model
+ */
 class CemeteryViewModel(application: Application) : AndroidViewModel(application) {
 
     private var viewModelJob = Job() //1.
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)     //3.
 
     private val repository: CemeteryRepo
-    // Using LiveData and caching what getAlphabetizedWords returns has several benefits:
-    // - We can put an observer on the data (instead of polling for changes) and only update the
-    //   the UI when the data actually changes.
-    // - Repository is completely separated from the UI through the ViewModel.
-    val allCems: LiveData<List<Cemetery>>
+
+
+
+
 
     private val _gravesWithId = MutableLiveData<List<Grave>>() //can change we need it mutable because it will be set over and over by database query results view model can change this property
     val gravesWithId: LiveData<List<Grave>>                     //cannot change, we expose this to other classes (incapsulation)
@@ -32,58 +41,50 @@ class CemeteryViewModel(application: Application) : AndroidViewModel(application
     val cemetery: LiveData<Cemetery>
         get() = _cemetery
 
+     var newCemeteryCounter: Int
+
+
     init {
         val wordsDao = CemeteryRoomDatabase.getDatabase(application, viewModelScope).cemDao()
         repository = CemeteryRepo(wordsDao)
-        allCems = repository.allCems
+        viewModelScope.launch {
+            repository.refreshVideos()
+        }
+        newCemeteryCounter = 0
     }
 
-    /**
-     * Launching a new coroutine to insert the data in a non-blocking way
-     */
+    val allCemeteries = repository.allCemeteries
+
+
+
+
+    //different way to do coroutines
     fun insertCemetery(word: Cemetery) = viewModelScope.launch(Dispatchers.IO) {
         repository.insertCemetery(word)
+        newCemeteryCounter += 1
     }
 
     //Call this when we need grave list and then observe the list from CemeteryDetailActivity
     fun getGraveList(id: Int){
         uiScope.launch {
-            _gravesWithId.value = getGraves(id)
+            _gravesWithId.value = repository.getGravesWithId(id)
             Log.i("ViewModel", "cemetery id is $id")
         }
     }
 
-    private suspend fun getGraves(id: Int): List<Grave>{
-        return withContext(Dispatchers.IO){
-            val graveList = repository.getGravesWithId(id)
-            graveList
-        }
-    }
     fun getCemetery(id: Int){
         uiScope.launch {
-            _cemetery.value = getCemeteryWithId(id)
+            _cemetery.value = repository.getCemeteryWithId(id)
         }
     }
 
-    private suspend fun getCemeteryWithId(id: Int): Cemetery? {
-        return withContext(Dispatchers.IO) {
-            val cemetery = repository.getCemeteryWithId(id)
-
-            cemetery
-        }
-    }
 
     fun insertGrave(grave: Grave){
         uiScope.launch {
-            susInsertGrave(grave)
-        }
-    }
-
-    private suspend fun susInsertGrave(grave: Grave){
-        withContext(Dispatchers.IO){
             repository.insertGrave(grave)
         }
     }
+
 
     fun sendCemeteryToNetwork(cemetery: Cemetery){
             repository.addCemetery(cemetery){

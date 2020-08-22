@@ -19,7 +19,7 @@ import retrofit2.http.POST
 
 interface RestApi {
 
-    @GET("/cgi-bin/stuTest.pl")
+    @GET("/cgi-bin/getCems.pl")
     fun getCemeteriesFromNetwork(): Deferred<NetworkCemeteryContainer>
 
     @FormUrlEncoded
@@ -64,10 +64,6 @@ object ServiceBuilder {
         .addConverterFactory(MoshiConverterFactory.create(moshi))
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .client(client)
-
-
-
-
         .build()
 
 

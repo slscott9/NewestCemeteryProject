@@ -120,6 +120,7 @@ class NewCemeteryActivity : AppCompatActivity() {
                 val firstYear = binding.firstYearEditText.text.toString()
                 val cemetery =
                     Cemetery(
+                        id = viewModel.newCemeteryCounter,
                         cemeteryName = name,
                         cemeteryLocation = location,
                         cemeteryState = state,
@@ -132,6 +133,7 @@ class NewCemeteryActivity : AppCompatActivity() {
                     )
                 viewModel.insertCemetery(cemetery)
                 viewModel.sendCemeteryToNetwork(cemetery)
+
                 finish()
             }
         }

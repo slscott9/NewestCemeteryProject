@@ -16,29 +16,29 @@ interface CemeteryDao {
     @Query("SELECT * from cemetery_table")
     fun getAllCemeteries(): LiveData<List<Cemetery>>
 
-    @Insert
-    fun insertCemetery(cem: Cemetery)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertCemetery(cem: Cemetery)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE) //if a grave has the same primary key it will replace it with the new data
-    fun insertGrave(grave: Grave)
+    suspend fun insertGrave(grave: Grave)
 
     @Query("DELETE FROM cemetery_table")
-    fun deleteAll()
+    suspend fun deleteAll()
 
     @Query("select * from graves where cemeteryId= :cemId")
-    fun getAllGravesWithId(cemId: Int) : List<Grave>
+    suspend fun getAllGravesWithId(cemId: Int) : List<Grave>
 
     @Query("select * from  cemetery_table where row_number= :rowNum")
-    fun getCemeteryWithRowNum(rowNum: Int) : Cemetery
+    suspend fun getCemeteryWithRowNum(rowNum: Int) : Cemetery
 
     @Query("delete from graves where id= :cemId")
-    fun deleteGraveWithId(cemId: Int)
+    suspend fun deleteGraveWithId(cemId: Int)
 
     @Query("select * from graves where id= :rowId")
-    fun getGraveWithRowId(rowId: Int) : Grave
+    suspend fun getGraveWithRowId(rowId: Int) : Grave
 
 
 
-    @Insert
-    fun insertCemeteryNetworkList(vararg cemeteryNetworkList: Cemetery)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertCemeteryNetworkList(vararg cemeteryNetworkList: Cemetery)
 }

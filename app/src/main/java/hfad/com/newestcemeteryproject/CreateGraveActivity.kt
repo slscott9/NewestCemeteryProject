@@ -21,6 +21,7 @@ class CreateGraveActivity : AppCompatActivity(), View.OnClickListener{
     private lateinit var bornDateListener: DatePickerDialog.OnDateSetListener
     private lateinit var deathDateListener: DatePickerDialog.OnDateSetListener
     private lateinit var marriedDateListener: DatePickerDialog.OnDateSetListener
+    private lateinit var viewModel: CemeteryViewModel
 
     private var cal = Calendar.getInstance()
 
@@ -29,7 +30,7 @@ class CreateGraveActivity : AppCompatActivity(), View.OnClickListener{
         binding = DataBindingUtil.setContentView(this, R.layout.activity_create_grave)
         binding.lifecycleOwner = this
         val cemeteryId = intent.getIntExtra("cemetery_id", 0)
-        val viewModel = ViewModelProvider(this).get(CemeteryViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(CemeteryViewModel::class.java)
 
 
         bornDateListener = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
@@ -73,7 +74,9 @@ class CreateGraveActivity : AppCompatActivity(), View.OnClickListener{
                         marriageYear = binding.marriageYearEt.text.toString(),
                         comment = binding.commentEt.text.toString(),
                         graveNumber = binding.graveNumEt.text.toString(),
-                        cemeteryId = cemeteryId)
+                        cemeteryId = cemeteryId,
+                        id = viewModel.newCemeteryCounter
+                        )
                 Log.i("CreateGraveActivity", "cemetery id passed is $cemeteryId")
                 viewModel.insertGrave(grave)
                 viewModel.sendGraveToNetwork(grave)

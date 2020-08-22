@@ -5,6 +5,7 @@ import hfad.com.newestcemeteryproject.network.RestApi
 import hfad.com.newestcemeteryproject.network.ServiceBuilder
 import hfad.com.newestcemeteryproject.network.asDatabaseModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Response
@@ -16,31 +17,30 @@ import retrofit2.Response
  */
 class CemeteryRepo(private val cemDao: CemeteryDao) {
 
-    val allCems: LiveData<List<Cemetery>> = cemDao.getAllCemeteries()
+    val allCemeteries = cemDao.getAllCemeteries()
 
 
-
-    fun insertCemetery(word: Cemetery) {
+    suspend fun insertCemetery(word: Cemetery) {
         cemDao.insertCemetery(word)
     }
 
-    fun insertGrave(grave: Grave){
+    suspend fun insertGrave(grave: Grave){
         cemDao.insertGrave(grave)
     }
 
-    fun getGravesWithId(cemeteryId: Int): List<Grave>{
+    suspend fun getGravesWithId(cemeteryId: Int): List<Grave>{
         return cemDao.getAllGravesWithId(cemeteryId)
     }
 
-    fun getCemeteryWithId(id: Int): Cemetery{
+    suspend fun getCemeteryWithId(id: Int): Cemetery{
         return cemDao.getCemeteryWithRowNum(id)
     }
 
-    fun deleteGraveWithId(cemeteryId: Int){
+    suspend fun deleteGraveWithId(cemeteryId: Int){
         cemDao.deleteGraveWithId(cemeteryId)
     }
 
-    fun getGraveWithRowId(rowId: Int): Grave{
+    suspend fun getGraveWithRowId(rowId: Int): Grave{
         return cemDao.getGraveWithRowId(rowId)
     }
 

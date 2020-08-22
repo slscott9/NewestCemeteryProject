@@ -34,7 +34,7 @@ class CemeteryListActivity : AppCompatActivity() {
         // Add an observer on the LiveData returned by the getAllCems
         // The onChanged() method fires when the observed data changes and the activity is
         // in the foreground.
-        viewModel.allCems.observe(this, Observer { allCemeteries ->
+        viewModel.allCemeteries.observe(this, Observer { allCemeteries ->
             // When there is a change in the List of Cemeteries send it to the adapter to update the recycler view
             allCemeteries?.let { adapter.submitList(it) }
         })
@@ -44,8 +44,7 @@ class CemeteryListActivity : AppCompatActivity() {
 
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener {
-            //val intent = Intent(this@CemeteryListActivity, NewCemeteryActivity::class.java)
-            val intent = Intent(this@CemeteryListActivity, TestGetListActivity::class.java)
+            val intent = Intent(this@CemeteryListActivity, NewCemeteryActivity::class.java)
             startActivity(intent)
         }
     }
