@@ -1,20 +1,26 @@
 package hfad.com.newestcemeteryproject.network
 
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import hfad.com.newestcemeteryproject.data.Cemetery
 import hfad.com.newestcemeteryproject.data.Grave
+import kotlinx.coroutines.Deferred
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 
 
 interface RestApi {
+
+    @GET("/cgi-bin/stuTest.pl")
+    fun getCemeteriesFromNetwork(): Deferred<NetworkCemeteryContainer>
 
     @FormUrlEncoded
     @POST("/cgi-bin/addCem.pl")
@@ -55,9 +61,16 @@ object ServiceBuilder {
 
     private val retrofit = Retrofit.Builder()
         .baseUrl("http://dts.scott.net") // change this IP for testing by your actual machine IP
-        .addConverterFactory(MoshiConverterFactory.create())
+        .addConverterFactory(MoshiConverterFactory.create(moshi))
+        .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .client(client)
+
+
+
+
         .build()
+
+
 
     //MoshiConverterFactory.create(moshi) if we are to use moshi converter this needs
     //to be in .addConverterFactory

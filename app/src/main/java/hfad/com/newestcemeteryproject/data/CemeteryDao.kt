@@ -36,4 +36,9 @@ interface CemeteryDao {
 
     @Query("select * from graves where id= :rowId")
     fun getGraveWithRowId(rowId: Int) : Grave
+
+
+
+    @Insert
+    fun insertCemeteryNetworkList(vararg cemeteryNetworkList: Cemetery)
 }

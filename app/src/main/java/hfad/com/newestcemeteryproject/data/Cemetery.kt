@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "cemetery_table")
 data class Cemetery(
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "row_number")
     val id: Int = 0,
 
@@ -52,3 +52,5 @@ data class Grave(
 
     val graveNumber: String
 )
+
+

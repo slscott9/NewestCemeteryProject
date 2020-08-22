@@ -44,7 +44,8 @@ class CemeteryListActivity : AppCompatActivity() {
 
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener {
-            val intent = Intent(this@CemeteryListActivity, NewCemeteryActivity::class.java)
+            //val intent = Intent(this@CemeteryListActivity, NewCemeteryActivity::class.java)
+            val intent = Intent(this@CemeteryListActivity, TestGetListActivity::class.java)
             startActivity(intent)
         }
     }

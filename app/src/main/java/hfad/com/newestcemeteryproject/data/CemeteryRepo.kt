@@ -3,6 +3,7 @@ package hfad.com.newestcemeteryproject.data
 import androidx.lifecycle.LiveData
 import hfad.com.newestcemeteryproject.network.RestApi
 import hfad.com.newestcemeteryproject.network.ServiceBuilder
+import hfad.com.newestcemeteryproject.network.asDatabaseModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Call
@@ -16,6 +17,8 @@ import retrofit2.Response
 class CemeteryRepo(private val cemDao: CemeteryDao) {
 
     val allCems: LiveData<List<Cemetery>> = cemDao.getAllCemeteries()
+
+
 
     fun insertCemetery(word: Cemetery) {
         cemDao.insertCemetery(word)
@@ -93,6 +96,14 @@ class CemeteryRepo(private val cemDao: CemeteryDao) {
                 }
             }
         )
+    }
+
+    suspend fun refreshVideos() {
+        withContext(Dispatchers.IO) {
+            val retrofit = ServiceBuilder.buildService(RestApi::class.java)
+            val cemeteryNetworkList = retrofit.getCemeteriesFromNetwork().await()
+            cemDao.insertCemeteryNetworkList(*cemeteryNetworkList.asDatabaseModel())
+        }
     }
 
 }
